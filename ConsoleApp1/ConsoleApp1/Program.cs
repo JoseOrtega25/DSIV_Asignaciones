@@ -95,6 +95,6 @@ Console.WriteLine(booleanoA);
 bool booleanoB = valorA && valorB;
 
 Console.WriteLine(booleanoB);
-
+// -----------------
 
 

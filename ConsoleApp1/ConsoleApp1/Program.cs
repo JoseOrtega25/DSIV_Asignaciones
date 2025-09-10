@@ -57,7 +57,7 @@ int sum3 = sum2 + sum2;     // 800 (400 + 400)
 */
 
 // Programa de introduccion a C#
-
+/*
 Console.WriteLine("Hola, Ingresa los siguientes datos");
 Console.WriteLine("Tu nombre: ");
 string nombre = Console.ReadLine();
@@ -96,5 +96,19 @@ bool booleanoB = valorA && valorB;
 
 Console.WriteLine(booleanoB);
 // -----------------
+*/
+
+string cadena = " Hola";
+string txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+Console.WriteLine("The length of the txt string is: " + txt.Length);
+
+string txt = "Hello World";
+Console.WriteLine(txt.ToUpper());   // Outputs "HELLO WORLD"
+Console.WriteLine(txt.ToLower());   // Outputs "hello world"
+
+
+
+
+
 
 

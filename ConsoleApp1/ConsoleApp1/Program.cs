@@ -97,7 +97,7 @@ bool booleanoB = valorA && valorB;
 Console.WriteLine(booleanoB);
 // -----------------
 */
-
+/*
 string cadena = " Hola";
 string txt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 Console.WriteLine("The length of the txt string is: " + txt.Length);
@@ -106,9 +106,25 @@ string txt = "Hello World";
 Console.WriteLine(txt.ToUpper());   // Outputs "HELLO WORLD"
 Console.WriteLine(txt.ToLower());   // Outputs "hello world"
 
+string firstName = "John ";
+string lastName = "Doe";
+string name = string.Concat(firstName, lastName);
+Console.WriteLine(name);
+
+string firs2tName = "John";
+string last2Name = "Doe";
+string name2 = $"My full name is: {first2Name} {last2Name}";
+Console.WriteLine(name2);
 
 
+string my2String = "Hello";
+Console.WriteLine(my2String.IndexOf("e"));  // Outputs "1"
+*/
 
+// luis.dominguez6@utp.ac.pa
+string correo = "luis.dominguez6@utp.ac.pa";
 
-
-
+int s = correo.IndexOf("luis");
+Console.WriteLine(s);
+string nombre = correo.Substring(s, "luis".Length);
+Console.WriteLine(nombre);

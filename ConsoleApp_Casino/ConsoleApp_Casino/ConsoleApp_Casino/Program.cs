@@ -7,6 +7,7 @@
 //Utilizaremos return para romper el ciclo while
 //Utilizaremos la variable switchControl para manejar el swicth
 string switchControl = "menu";
+System.Random random = new System.Random();
 while (true)
 {
     int totalJugador = 0;
@@ -30,7 +31,7 @@ while (true)
             // En este bucle, la primera iteracion siempre se realiza 
             do
             {
-                System.Random random = new System.Random();
+               
                 totalDealer = random.Next(1, 12);
                 num = random.Next(1, 12);
                 totalJugador = totalJugador + num;
@@ -40,25 +41,22 @@ while (true)
 
             } while (cartaControl == "Si" || cartaControl == "si");
             // Aqui termina el bloque do while
-
-
+            //Se obtiene la carta del dealer
+            totalDealer = random.Next(1, 12);
+            Console.WriteLine("Carta del dealer: " + totalDealer);
             if (totalJugador > totalDealer && totalJugador < 22)
             {
-
-                Console.WriteLine("Carta del dealer: " + totalDealer);
                 message = "Venciste al dealer";
                 switchControl = "menu";
             }
             else if (totalJugador >= 22)
             {
-                Console.WriteLine("Carta del dealer: " + totalDealer);
-
+               
                 message = "Te pasaste de 21, perdiste!";
                 switchControl = "menu";
             }
             else if (totalJugador <= totalDealer)
             {
-                Console.WriteLine("Carta del dealer: " + totalDealer);
                 message = "Perdiste vs el dealer, lo siento";
 
                 switchControl = "menu";

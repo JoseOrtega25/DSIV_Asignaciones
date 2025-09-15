@@ -8,16 +8,23 @@
 //Utilizaremos la variable switchControl para manejar el swicth
 string switchControl = "menu";
 System.Random random = new System.Random();
+
+
 while (true)
 {
-    int totalJugador = 0;
-    int totalDealer = 0;
-    int num = 0;
-    string controlOtraCarta = "";
+    
     string message = "";
     string cartaControl = "";
+    int coins = 0;
+    Console.WriteLine("Cuantos coins deseas ?");
+    coins = Convert.ToInt32(Console.ReadLine());
 
-    switch (switchControl)
+    for (int i = 0; i < coins; i++) {
+        Console.WriteLine("Valor de i : " + i);
+        int totalJugador = 0;
+        int totalDealer = 0;
+        int num = 0;
+        switch (switchControl)
     {
         case "menu":
             Console.WriteLine("BIENVENIDO AL CASINO");
@@ -39,7 +46,7 @@ while (true)
                 Console.WriteLine("Deseas otra carta?");
                 cartaControl = Console.ReadLine();
 
-            } while (cartaControl == "Si" || cartaControl == "si");
+            } while (cartaControl == "Si" || cartaControl == "si" || cartaControl == "s");
             // Aqui termina el bloque do while
             //Se obtiene la carta del dealer
             totalDealer = random.Next(1, 12);
@@ -73,5 +80,6 @@ while (true)
 
             break;
     }// Cerramos switch
+}// cerramos ciclo for
 }// cerramos ciclo while
 

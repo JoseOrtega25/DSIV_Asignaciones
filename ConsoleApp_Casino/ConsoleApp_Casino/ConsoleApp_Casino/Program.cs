@@ -30,7 +30,9 @@ while (true)
             Console.WriteLine("BIENVENIDO AL CASINO");
             Console.WriteLine("Juegos disponibles: ");
             Console.WriteLine("Escriba 21 para jugar Blackjack\nEscriba 0 para salir ");
-            switchControl = Console.ReadLine(); // Variable que controla el switch
+       
+                    switchControl = Console.ReadLine(); // Variable que controla el switch
+                i--;    
             break;
 
         case "21":
@@ -73,11 +75,12 @@ while (true)
 
         case "0":
             Console.WriteLine("Saliendo...");
-            return;
-        default:
+                Environment.Exit(0);
+                break;
+            default:
             // Al caer en este bloque, se genera un bucle infinito, ya que no hay un return o no se utiliza una variable que cambie el valor booleano del while
             Console.WriteLine("Valor ingresado no valido en el C A S I N O");
-
+                
             break;
     }// Cerramos switch
 }// cerramos ciclo for

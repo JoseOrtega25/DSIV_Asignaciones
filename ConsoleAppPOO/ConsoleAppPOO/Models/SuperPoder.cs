@@ -9,14 +9,14 @@ namespace ConsoleAppPOO.Models
     internal class SuperPoder
     {
 
-            public string nombre;
+            public string Nombre;
             public string Descripcion;
-            public string NivelPoder Nivel;
+            public NivelPoder Nivel;
 
 
     public SuperPoder()
             {
-                NivelPoder = NivelPoder.NivelUno;
+                Nivel = NivelPoder.NivelUno;
             }
         }
 

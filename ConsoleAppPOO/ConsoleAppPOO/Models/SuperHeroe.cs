@@ -13,7 +13,7 @@ namespace ConsoleAppPOO.Models
             public string Nombre;
             public string IdentidadSecreta;
             public string Ciudad;
-    public List<SuperPoder> SuperPoderes = new List<SuperPoder>;
+    public List<SuperPoder> SuperPoderes = new List<SuperPoder>();
             public bool PuedeVolar;
 
             public SuperHeroe()

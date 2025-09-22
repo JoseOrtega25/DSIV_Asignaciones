@@ -10,8 +10,8 @@ poderVolar.Descripcion =  "Capacidad de volar y planear en el aire";
 poderVolar.Nivel = NivelPoder.NivelDos;
 
 var superFuerza = new SuperPoder();
-superFuerza.Nombre = "Super Fuerza" +
-poderVolar.Nivel = NivePoder.NivelTres;
+superFuerza.Nombre = "Super Fuerza";
+superFuerza.Nivel = NivelPoder.NivelTres;
 
 var superman = new SuperHeroe();
 superman.Id = 1;

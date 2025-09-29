@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleAppPOO.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,33 +7,66 @@ using System.Threading.Tasks;
 
 namespace ConsoleAppPOO.Models
 {
-    internal class SuperHeroe
+    public class SuperHeroe : Heroe, ISuperHeroe
     {
-       
-            public int Id = 1;
-            public string Nombre;
-            public string IdentidadSecreta;
-            public string Ciudad;
-    public List<SuperPoder> SuperPoderes = new List<SuperPoder>();
-            public bool PuedeVolar;
-
-            public SuperHeroe()
+        // Propiedades públicas del superhéroe
+        private string _Nombre;
+        public int Id { get; set; }
+        public override string Nombre
+        {
+            get
             {
-                Id = 1;
-                SuperPoderes = new List<SuperPoder>();
-                PuedeVolar = false;
+                return _Nombre;
+
             }
 
-            public string UsarSuperPoderes()
+            set
             {
-                StringBuilder sb = new StringBuilder();
-                foreach (var item in SuperPoderes)
-                {
-                    sb.AppendLine($"{Nombre} está usando el super poder {item.Nombre}!!");
-
-                }
-                return sb.ToString();
+                _Nombre = value.Trim();
             }
         }
+        public string IdentidadSecreta { get; set; }
+        public string Ciudad { get; set; }
+        public List<SuperPoder> SuperPoderes { get; set; }
+        public bool PuedeVolar { get; set; }
+
+        public SuperHeroe() { }
+
+        public SuperHeroe(int id, string nombre, string identidadSecreta, string ciudad, bool puedeVolar, List<SuperPoder> superPoderes)
+        {
+            Id = id;
+            Nombre = nombre;
+            IdentidadSecreta = identidadSecreta;
+            Ciudad = ciudad;
+            PuedeVolar = puedeVolar;
+            SuperPoderes = superPoderes;
+        }
+
+        public override string SalvarLaTierra()
+        {
+            return $"El superhéroe {IdentidadSecreta} ha salvado la Tierra!";
+        }
+
+        public void UsarSuperpoder()
+        {
+        }
+
+        private void MetodoPrivado()
+        {
+        }
+
+        internal void MetodoInterno()
+        {
+        }
+
+        protected internal void MetodoProtegidoInterno()
+        {
+        }
+
+        public override string SalvarElMundo()
+        {
+            return $"El superhéroe {Nombre} está salvando el mundo!";
+        }
     }
+}
 

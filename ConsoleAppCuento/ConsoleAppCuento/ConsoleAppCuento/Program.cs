@@ -44,8 +44,9 @@ using (StreamWriter sr = new StreamWriter(ResultadosCuentoRuta))
     string[] palabrasDelCuento = contentStory.Split(' ', StringSplitOptions.RemoveEmptyEntries);
     int caracteresCuento = contentStory.Length;
     string resultadoConFormat = "";
+    int numpalabras = palabrasDelCuento.Length;
 
-    resultadoConFormat = string.Format("El cuento tiene {0} caracteres y {1} palabras", caracteresCuento, palabrasDelCuento);
+    resultadoConFormat = string.Format("El cuento tiene {0} caracteres y {1} palabras", caracteresCuento, numpalabras);
     Print("3-Utilizamos 'string.Format' para configurar una cadena ");
 
     Print(resultadoConFormat);
@@ -70,7 +71,7 @@ using (StreamWriter sr = new StreamWriter(ResultadosCuentoRuta))
 
     int indexMundo = contentStory.IndexOf("mundo");
     Print("6- Utilizamos IndexOf() buscar el indice de la primera concurrrencia de la palabra 'Mundo''");
-    Print($"{indexMundo + 1} es la posicion de la primera concurrencia de la palabram (Mundo) ");
+    Print($"{indexMundo} es la posicion de la primera concurrencia de la palabram (Mundo) ");
     char[] arrayCuento = contentStory.ToCharArray();
     //Print("Palabras del cuento");
     //int i = 0;
@@ -158,7 +159,7 @@ using (StreamWriter sr = new StreamWriter(ResultadosCuentoRuta))
     //19. TrimEnd
     Print("19-Utilizamos la funcion TrimStar() para quitar los espacios al final de la frase 'Bitin explorador     ");
 
-    Print("Bitín explorador".TrimEnd());
+    Print("Bitín explorador ".TrimEnd());
     Print("-------------------------------------------------------------------------------------------------------");
     //20.Split()
     Print("20- Utilizamos 'Split()' para dividir el cuento por palabras tomando como separador cada espacio en blanco ");

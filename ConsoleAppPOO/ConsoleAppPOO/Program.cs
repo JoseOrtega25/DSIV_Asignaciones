@@ -1,46 +1,95 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using ConsoleAppPOO;
+using ConsoleAppPOO.Models;
 using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using ConsoleAppPOO.Models;
+using static ConsoleAppPOO.Models.SuperPoder;
 
-var poderVolar = new SuperPoder();
-poderVolar.Nombre ="Volar";
-poderVolar.Descripcion =  "Capacidad de volar y planear en el aire";
-poderVolar.Nivel = NivelPoder.NivelDos;
+var superman = new SuperHeroe(
+    id: 1,
+    nombre: "   Superman    ",
+    identidadSecreta: "Clark Kent",
+    ciudad: "Metropolis",
+    puedeVolar: true,
+    superPoderes: new List<SuperPoder>()
+);
+ImprimirInfo.ImprimirSuperHeroe(superman);
 
-var superFuerza = new SuperPoder();
-superFuerza.Nombre = "Super Fuerza";
-superFuerza.Nivel = NivelPoder.NivelTres;
-
-var superman = new SuperHeroe();
-superman.Id = 1;
-superman.Nombre = "Superman";
-superman.IdentidadSecreta = "Clark Kent";
-superman.Ciudad = "Metropolis";
-superman.PuedeVolar = true;
-
-var superman2 = new SuperHeroe();
-superman2.Id = 1;
-superman2.Nombre = "Superman";
-superman2.IdentidadSecreta = "Clark Kent";
-superman2.Ciudad = "Metropolis";
-superman2.PuedeVolar = true;
-
-List<SuperPoder> poderesSuperman = new List<SuperPoder>();
-poderesSuperman.Add(poderVolar);
-poderesSuperman.Add(superFuerza);
-superman.SuperPoderes = poderesSuperman;
-string resultSuperPoderes = superman.UsarSuperPoderes();
-Console.WriteLine(resultSuperPoderes);
-
-enum NivelPoder
+var wolverine = new AntiHeroe
 {
-    NivelUno,
-    NivelDos,
-    NivelTres
+    Id = 2,
+    Nombre = "Wolverine",
+    IdentidadSecreta = "Logan",
+    Ciudad = "New York",
+    PuedeVolar = false,
+    SuperPoderes = new List<SuperPoder>(),
+};
+
+string accionAntiHeroe = wolverine.RealizarAccionDeAntiheroe("Ataca a la policia");
+Console.WriteLine(accionAntiHeroe);
+
+SuperPoder poderVolar = new SuperPoder(
+    nombre: "Volar",
+    descripcion: "Capacidad para volar y planear en el aire.",
+    nivel: NivelPoder.NivelDos
+);
+
+SuperPoder superfuerza = new SuperPoder(
+    nombre: "Superfuerza",
+    descripcion: null,
+    nivel: NivelPoder.NivelTres
+);
+
+// Crea una instancia de Superpoder para "Regeneración"
+SuperPoder regeneracion = new SuperPoder(
+    nombre: "Regeneración",
+    descripcion: null, // No se proporciona descripción
+    nivel: NivelPoder.NivelTres
+);
+
+// Crea una lista de superpoderes y la asigna a Wolverine
+List<SuperPoder> poderesWolverine = new List<SuperPoder> { regeneracion, superfuerza };
+wolverine.SuperPoderes = poderesWolverine;
+
+
+
+// Crea una lista de superpoderes y la asigna a Superman
+List<SuperPoder> poderesSuperman = new List<SuperPoder> { poderVolar, superfuerza };
+superman.SuperPoderes = poderesSuperman;
+string resultSalvarAlMundo = superman.SalvarElMundo();
+string resultSalvarLaTierra = superman.SalvarLaTierra();
+
+// Impresión de prueba
+Console.WriteLine($"Id: {superman.Id}");
+Console.WriteLine($"Nombre: {superman.Nombre}");
+Console.WriteLine($"Identidad Secreta: {superman.IdentidadSecreta}");
+Console.WriteLine($"Ciudad: {superman.Ciudad}");
+Console.WriteLine($"Puede Volar: {superman.PuedeVolar}");
+Console.WriteLine("Superpoderes:");
+Console.WriteLine(resultSalvarAlMundo);
+Console.WriteLine(resultSalvarLaTierra);
+foreach (var poder in superman.SuperPoderes)
+{
+    Console.WriteLine($"- {poder.Nombre} (Nivel: {poder.Nivel})" +
+        (string.IsNullOrEmpty(poder.Descripcion) ? "" : $", Descripción: {poder.Descripcion}"));
 }
 
+
+Console.WriteLine($"Id: {wolverine.Id}");
+Console.WriteLine($"Nombre: {wolverine.Nombre}");
+Console.WriteLine($"Identidad Secreta: {wolverine.IdentidadSecreta}");
+Console.WriteLine($"Ciudad: {wolverine.Ciudad}");
+Console.WriteLine($"Puede Volar: {wolverine.PuedeVolar}");
+Console.WriteLine("Superpoderes:");
+foreach (var poder in wolverine.SuperPoderes)
+{
+    Console.WriteLine($"- {poder.Nombre} (Nivel: {poder.Nivel})" +
+        (string.IsNullOrEmpty(poder.Descripcion) ? "" : $", Descripción: {poder.Descripcion}"));
+}
+
+
+public record SuperHeroeRecord(int Id, string Nombre, string IdentidadSecreta);
 
 
 

@@ -6,20 +6,28 @@ using System.Threading.Tasks;
 
 namespace ConsoleAppPOO.Models
 {
-    internal class SuperPoder
-    {
+    
+        public class SuperPoder
+        {
+            public string Nombre { get; set; }
+            public string Descripcion { get; set; }
 
-            public string Nombre;
-            public string Descripcion;
-            public NivelPoder Nivel;
+            public NivelPoder Nivel { get; set; }
 
+            public SuperPoder() { }
 
-    public SuperPoder()
+            public SuperPoder(string nombre, string descripcion, NivelPoder nivel)
             {
-                Nivel = NivelPoder.NivelUno;
+                Nombre = nombre;
+                Descripcion = descripcion;
+                Nivel = nivel;
+            }
+            public enum NivelPoder
+            {
+                NivelUno,
+                NivelDos,
+                NivelTres
             }
         }
 
-
     }
-

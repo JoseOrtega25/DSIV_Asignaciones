@@ -1,0 +1,55 @@
+  static async Task<string> LlamarOpenAIAsync(string prompt, string system = "Eres un asistente que ayuda con LINQ y C# en español.")
+  {
+      try
+      {
+          var apiKey = Environment.GetEnvironmentVariable("OPENAI_API_KEY");
+          if (string.IsNullOrWhiteSpace(apiKey))
+          {
+              Console.WriteLine("No se encontró la variable OPENAI_API_KEY.");
+              return null;
+          }
+
+          using var client = new HttpClient();
+          client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", apiKey);
+
+          var payload = new
+          {
+              model = "gpt-4o-mini",
+
+              messages = new[]
+              {
+          new { role = "system", content = system },
+          new { role = "user", content = prompt }
+      },
+              max_tokens = 600,
+              temperature = 0.3
+          };
+
+          var json = JsonConvert.SerializeObject(payload);
+          using var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+          var resp = await client.PostAsync("https://api.openai.com/v1/chat/completions", content);
+          var text = await resp.Content.ReadAsStringAsync();
+
+          if (!resp.IsSuccessStatusCode)
+          {
+              // Detectar error de cuota insuficiente
+              if ((int)resp.StatusCode == 429 && text.Contains("insufficient_quota"))
+              {
+                  Console.WriteLine("Error: No tienes créditos suficientes en tu cuenta de OpenAI.");
+              }
+              else
+              {
+                  Console.WriteLine($"OpenAI API devolvió error ({(int)resp.StatusCode}): {text}");
+              }
+              return null;
+          }
+
+          var j = JObject.Parse(text);
+          return j["choices"]?.First?["message"]?["content"]?.ToString() ?? "(sin respuesta)";
+      }
+      catch (Exception ex)
+      {
+          Console.WriteLine($"Error al llamar a OpenAI: {ex.Message}");
+          return null;
+      }
+  }
